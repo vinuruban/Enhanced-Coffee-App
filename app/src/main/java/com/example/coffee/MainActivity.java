@@ -66,10 +66,16 @@ public class MainActivity extends AppCompatActivity {
      */
     private void goDown() {
         TextView quant = (TextView) findViewById(R.id.quant);
-        quantity = quantity - 1;
-        quant.setText("" + quantity);
+
+        if(quantity==0) {
+//            do nothing!
+        }
+        else {
+            quantity = quantity - 1;
+            quant.setText("" + quantity);
 //        the "" above is a shortcut to change numbers to STRING!
-        displayPrice();
+            displayPrice();
+        }
     }
 
     /**
@@ -87,7 +93,13 @@ public class MainActivity extends AppCompatActivity {
     private void confirmation() {
         TextView price = (TextView) findViewById(R.id.price);
         String priceText = (String) price.getText();
-        TextView quant = (TextView) findViewById(R.id.confirm);
-        quant.setText("Your order has been replaced! That'd be " + priceText + ".");
+        TextView confirm = (TextView) findViewById(R.id.confirm);
+
+        if(quantity==0) {
+            confirm.setText("Please select quantity");
+        }
+        else {
+            confirm.setText("Your order has been placed! That'd be " + priceText + ".");
+        }
     }
 }
