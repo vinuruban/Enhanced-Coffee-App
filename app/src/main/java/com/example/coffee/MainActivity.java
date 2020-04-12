@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -137,37 +138,29 @@ public class MainActivity extends AppCompatActivity {
         TextView confirm = (TextView) findViewById(R.id.confirm);
 
         if(latteCount==0 && cappuCount==0 && mochaCount==0) {
-            confirm.setText("Please select quantity");
-            confirm.setTextColor(Color.BLACK);// We are changing the "state of the object" (attribute of the XML).
+            Toast.makeText(this, "Please select quantity", Toast.LENGTH_SHORT).show();
         }
         else if (latteCount == 0 && cappuCount == 0) {
             confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + mochaCount + " x Café Mocha" );
-            confirm.setTextColor(Color.BLUE);
         }
         else if (latteCount == 0 && mochaCount == 0) {
             confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + cappuCount + " x Cappucinno" );
-            confirm.setTextColor(Color.BLUE);
         }
         else if (cappuCount == 0 && mochaCount == 0) {
             confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + latteCount + " x Café Latte" );
-            confirm.setTextColor(Color.BLUE);
         }
         else if (latteCount == 0) {
                 confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + cappuCount + " x Cappucinno, " + mochaCount + " x Café Mocha" );
-                confirm.setTextColor(Color.BLUE);
             }
         else if (cappuCount == 0){
                 confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + latteCount + " x Café Latte, " + mochaCount + " x Café Mocha" );
-                confirm.setTextColor(Color.BLUE);
             }
         else if (mochaCount == 0) {
                 confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + latteCount + " x Café Latte, " + cappuCount + " x Cappucinno" );
-                confirm.setTextColor(Color.BLUE);
             }
 
         else {
             confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + latteCount + " x Café Latte, " + cappuCount + " x Cappucinno, " + mochaCount + " x Café Mocha");
-            confirm.setTextColor(Color.BLUE);
         }
 
     }
