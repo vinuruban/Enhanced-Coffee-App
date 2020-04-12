@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (cappuCount == 0 && mochaCount == 0) {
             confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + latteCount + " x Café Latte" );
-            confirm.setTextColor(Color.MAGENTA);
+            confirm.setTextColor(Color.BLUE);
         }
         else if (latteCount == 0) {
                 confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + cappuCount + " x Cappucinno, " + mochaCount + " x Café Mocha" );
