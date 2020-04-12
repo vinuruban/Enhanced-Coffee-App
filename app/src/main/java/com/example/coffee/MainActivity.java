@@ -10,9 +10,11 @@ package com.example.coffee;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -171,17 +173,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCheckboxClicked(View view) {
-        Button incLatte = (Button) findViewById(R.id.increment1);
+
+//        To control the visibilty of the layout as a whole
+        LinearLayout layout1 = (LinearLayout) findViewById(R.id.layout1);
+        LinearLayout layout2 = (LinearLayout) findViewById(R.id.layout2);
+        LinearLayout layout3 = (LinearLayout) findViewById(R.id.layout3);
+
         TextView latteText = (TextView) findViewById(R.id.quantity1);
-        Button decLatte = (Button) findViewById(R.id.decrement1);
-
-        Button incCappu = (Button) findViewById(R.id.increment2);
         TextView cappuText = (TextView) findViewById(R.id.quantity2);
-        Button decCappu = (Button) findViewById(R.id.decrement2);
-
-        Button incMocha = (Button) findViewById(R.id.increment3);
         TextView mochaText = (TextView) findViewById(R.id.quantity3);
-        Button decMocha = (Button) findViewById(R.id.decrement3);
 
         CheckBox checkBox1 = (CheckBox) findViewById(R.id.checkbox1);
         CheckBox checkBox2 = (CheckBox) findViewById(R.id.checkbox2);
@@ -194,12 +194,10 @@ public class MainActivity extends AppCompatActivity {
 
         if(clickedView == checkBox1.getId()) {
             if (checkBox1.isChecked()) {
-                incLatte.setEnabled(true);
-                decLatte.setEnabled(true);
+                layout1.setVisibility(view.VISIBLE);
             }
             else{
-                incLatte.setEnabled(false);
-                decLatte.setEnabled(false);
+                layout1.setVisibility(view.GONE);
                 latteCount=0;
                 latteText.setText("" + latteCount);
                 displayPrice();
@@ -207,12 +205,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (clickedView == checkBox2.getId()) {
             if (checkBox2.isChecked()) {
-                incCappu.setEnabled(true);
-                decCappu.setEnabled(true);
+                layout2.setVisibility(view.VISIBLE);
             }
             else{
-                incCappu.setEnabled(false);
-                decCappu.setEnabled(false);
+                layout2.setVisibility(view.GONE);
                 cappuCount=0;
                 cappuText.setText("" + cappuCount);
                 displayPrice();
@@ -220,12 +216,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (clickedView == checkBox3.getId()) {
             if (checkBox3.isChecked()) {
-                incMocha.setEnabled(true);
-                decMocha.setEnabled(true);
+                layout3.setVisibility(view.VISIBLE);
             }
             else{
-                incMocha.setEnabled(false);
-                decMocha.setEnabled(false);
+                layout3.setVisibility(view.GONE);
                 mochaCount=0;
                 mochaText.setText("" + mochaCount);
                 displayPrice();
