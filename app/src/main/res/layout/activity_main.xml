@@ -43,8 +43,7 @@
             android:id="@+id/quantity1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:fontFamily="sans-serif-light"
+            style="@style/StandardText"
             android:paddingLeft="7dp"
             android:paddingRight="7dp"
             android:text="0" />
@@ -97,8 +96,7 @@
             android:id="@+id/quantity2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:fontFamily="sans-serif-light"
+            style="@style/StandardText"
             android:paddingLeft="7dp"
             android:paddingRight="7dp"
             android:text="0" />
@@ -151,8 +149,7 @@
             android:id="@+id/quantity3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:fontFamily="sans-serif-light"
+            style="@style/StandardText"
             android:paddingLeft="7dp"
             android:paddingRight="7dp"
             android:text="0" />
@@ -191,10 +188,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
         android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:fontFamily="sans-serif-light"
         android:text="$0.00"
-        android:textColor="@android:color/black" />
+        style="@style/StandardText"/>
 
     <Button
         android:id="@+id/orderBtn"
@@ -216,5 +211,19 @@
         android:textStyle="bold"
         android:textColor="#29ba30"
         android:fontFamily="sans-serif-light"/>
+
+    <Button
+        android:id="@+id/emailOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:fontFamily="sans-serif-light"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:text="Email order summary"
+        android:onClick="emailOrder"
+        android:visibility="gone"/>
 
 </LinearLayout>

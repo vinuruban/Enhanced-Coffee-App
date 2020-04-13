@@ -1,11 +1,19 @@
 <resources>
 
+    <!-- Standard Text -->
+    <style name="StandardText" >
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+    </style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#784B3D</item>
+        <item name="colorPrimaryDark">#90784B3D</item>
+        <item name="colorAccent">#FF5722</item>
     </style>
 
 </resources>

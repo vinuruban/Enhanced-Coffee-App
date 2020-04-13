@@ -8,7 +8,9 @@
 
 package com.example.coffee;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.View;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     int latteCount = 0;
     int cappuCount = 0;
     int mochaCount = 0;
+    String summary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,32 +140,59 @@ public class MainActivity extends AppCompatActivity {
         String priceText = (String) price.getText();
         TextView confirm = (TextView) findViewById(R.id.confirm);
 
+        Button button = (Button) findViewById(R.id.emailOrder);
+
         if(latteCount==0 && cappuCount==0 && mochaCount==0) {
             Toast.makeText(this, "Please select quantity", Toast.LENGTH_SHORT).show();
         }
         else if (latteCount == 0 && cappuCount == 0) {
-            confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + mochaCount + " x Café Mocha" );
+            summary = "Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + mochaCount + " x Café Mocha";
+            confirm.setText(summary);
+            button.setVisibility(view.VISIBLE);
+
         }
         else if (latteCount == 0 && mochaCount == 0) {
-            confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + cappuCount + " x Cappucinno" );
+            summary = "Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + cappuCount + " x Cappucinno";
+            confirm.setText(summary);
+            button.setVisibility(view.VISIBLE);
         }
         else if (cappuCount == 0 && mochaCount == 0) {
-            confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + latteCount + " x Café Latte" );
+            summary = "Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + latteCount + " x Café Latte";
+            confirm.setText(summary);
+            button.setVisibility(view.VISIBLE);
         }
         else if (latteCount == 0) {
-                confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + cappuCount + " x Cappucinno, " + mochaCount + " x Café Mocha" );
-            }
+            summary = "Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + cappuCount + " x Cappucinno, " + mochaCount + " x Café Mocha";
+            confirm.setText(summary);
+            button.setVisibility(view.VISIBLE);
+        }
         else if (cappuCount == 0){
-                confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + latteCount + " x Café Latte, " + mochaCount + " x Café Mocha" );
-            }
+            summary = "Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + latteCount + " x Café Latte, " + mochaCount + " x Café Mocha";
+            confirm.setText(summary);
+            button.setVisibility(view.VISIBLE);
+        }
         else if (mochaCount == 0) {
-                confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + latteCount + " x Café Latte, " + cappuCount + " x Cappucinno" );
-            }
-
-        else {
-            confirm.setText("Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + latteCount + " x Café Latte, " + cappuCount + " x Cappucinno, " + mochaCount + " x Café Mocha");
+            summary = "Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + latteCount + " x Café Latte, " + cappuCount + " x Cappucinno";
+            confirm.setText(summary);
+            button.setVisibility(view.VISIBLE);
         }
 
+        else {
+            summary = "Your order has been placed! That'd be " + priceText + ".\nOrder Summary: " + latteCount + " x Café Latte, " + cappuCount + " x Cappucinno, " + mochaCount + " x Café Mocha";
+            confirm.setText(summary);
+            button.setVisibility(view.VISIBLE);
+        }
+
+    }
+
+    public void emailOrder(View view) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Order summary for Coffee App");
+        intent.putExtra(Intent.EXTRA_TEXT, summary);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     public void onCheckboxClicked(View view) {
